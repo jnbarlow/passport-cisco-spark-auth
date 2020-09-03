@@ -1,0 +1,26 @@
+{
+  "name": "passport-cisco-spark-auth",
+  "version": "1.0.0",
+  "description": "Passport strategy for authenticating with Cisco Webex",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docket-hq/passport-cisco-spark-auth.git"
+  },
+  "keywords": [
+    "node",
+    "passport",
+    "cisco",
+    "webex",
+    "oauth"
+  ],
+  "author": "John Barlow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/docket-hq/passport-cisco-spark-auth/issues"
+  },
+  "homepage": "https://github.com/docket-hq/passport-cisco-spark-auth#readme"
+}
