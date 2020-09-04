@@ -21,6 +21,9 @@ var util = require('util')
  *   - `clientID`      your CiscoSpark application's client id
  *   - `clientSecret`  your CiscoSpark application's client secret
  *   - `callbackURL`   URL to which CiscoSpark will redirect the user after granting authorization
+ *  <optional>
+ *  - passReqToCallback (default false) - directs passport to send the request object 
+ *                                        to the verfication callback
  *
  * Examples:
  *
@@ -46,10 +49,14 @@ function Strategy(options, verify) {
   options.tokenURL = options.tokenURL || 'https://api.ciscospark.com/v1/access_token';
   // default options.scopeSeparator needs to be ' ' with Cisco Spark
   options.scopeSeparator = options.scopeSeparator || ' ';
+  //pass this for tests
+  this.userAuthorizationURL = options.authorizationURL;
+  this.accessTokenURL = options.tokenURL;
   
   OAuth2Strategy.call(this, options, verify);
   this.name = 'cisco-spark'; 
-  
+  this._passReqToCallback = options.passReqToCallback || false;
+    
   // need to set this to true so that access_token is not appended to url as query parameter
   // small f for for (careful when calling the method!!)
   this._oauth2.useAuthorizationHeaderforGET(true);
