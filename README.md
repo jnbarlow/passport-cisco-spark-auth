@@ -25,7 +25,8 @@ accepts these credentials and calls `done` providing a user, as well as
     passport.use(new CiscoSparkStrategy({
         clientID: CISCO_SPARK_CLIENT_ID,
         clientSecret: CISCO_SPARK_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:3000/auth/spark/callback"
+        callbackURL: "http://127.0.0.1:3000/auth/spark/callback",
+        passReqToCallback: true
       },
       function(accessToken, refreshToken, profile, done) {
         User.findOrCreate({ sparkId: profile.id }, function (err, user) {
@@ -51,6 +52,9 @@ application:
         // Successful authentication, redirect home.
         res.redirect('/');
       });
+
+**Optional Parameters:**
+- **passReqToCallback** (default false) - directs passport to send the request object to the verfication callback
 
 ## Examples
 

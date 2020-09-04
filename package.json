@@ -4,7 +4,7 @@
   "description": "Passport strategy for authenticating with Cisco Webex",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha test/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/docket-hq/passport-cisco-spark-auth/issues"
   },
-  "homepage": "https://github.com/docket-hq/passport-cisco-spark-auth#readme"
+  "homepage": "https://github.com/docket-hq/passport-cisco-spark-auth#readme",
+  "dependencies": {
+    "passport-oauth2": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0",
+    "should": "^13.2.3"
+  }
 }
