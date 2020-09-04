@@ -56,15 +56,6 @@ application:
 **Optional Parameters:**
 - **passReqToCallback** (default false) - directs passport to send the request object to the verfication callback
 
-## Examples
-
-For a complete, working example, refer to the [login example](https://github.com/bmoyroud/passport-cisco-spark/tree/master/examples/login).
-
-## Tests
-
-    $ npm install --dev
-    $ make test
-
 ## Credits
 
   - [Jared Hanson](http://github.com/jaredhanson)

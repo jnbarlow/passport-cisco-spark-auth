@@ -15,8 +15,8 @@ describe('CiscoSparkStrategy', function() {
         it('should return false for passReqToCallback', function () {
             const strategy = new CiscoSparkStrategy({
                 test: true,
-                consumerKey: 'ABC123',
-                consumerSecret: 'secret'
+                clientID: 'ABC123',
+                clientSecret: 'secret'
             }, function () { });
 
             strategy._passReqToCallback.should.equal(false);
@@ -25,8 +25,8 @@ describe('CiscoSparkStrategy', function() {
         it('should return true for passReqToCallback', function () {
             const strategy = new CiscoSparkStrategy({
                 test: true,
-                consumerKey: 'ABC123',
-                consumerSecret: 'secret',
+                clientID: 'ABC123',
+                clientSecret: 'secret',
                 passReqToCallback: true
             }, function () { });
 
@@ -36,8 +36,8 @@ describe('CiscoSparkStrategy', function() {
         it('should return prod oauth urls', function () {
             const strategy = new CiscoSparkStrategy({
                 test: true,
-                consumerKey: 'ABC123',
-                consumerSecret: 'secret'
+                clientID: 'ABC123',
+                clientSecret: 'secret'
             }, function () { });
 
             strategy.userAuthorizationURL.should.equal('https://api.ciscospark.com/v1/authorize');
@@ -47,8 +47,8 @@ describe('CiscoSparkStrategy', function() {
         it('should return options oauth urls', function () {
             const strategy = new CiscoSparkStrategy({
                 test: true,
-                consumerKey: 'ABC123',
-                consumerSecret: 'secret',
+                clientID: 'ABC123',
+                clientSecret: 'secret',
                 authorizationURL: 'https://api.ciscospark.com/v2/authorize',
                 tokenURL: 'https://api.ciscospark.com/v2/access_token'
             }, function () { });

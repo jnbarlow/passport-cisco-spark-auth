@@ -49,19 +49,17 @@ function Strategy(options, verify) {
   options.tokenURL = options.tokenURL || 'https://api.ciscospark.com/v1/access_token';
   // default options.scopeSeparator needs to be ' ' with Cisco Spark
   options.scopeSeparator = options.scopeSeparator || ' ';
-  this._passReqToCallback = options.passReqToCallback || false;
   //pass this for tests
   this.userAuthorizationURL = options.authorizationURL;
   this.accessTokenURL = options.tokenURL;
   
-  if (!options.test) {
-    OAuth2Strategy.call(this, options, verify);
-    this.name = 'cisco-spark'; 
+  OAuth2Strategy.call(this, options, verify);
+  this.name = 'cisco-spark'; 
+  this._passReqToCallback = options.passReqToCallback || false;
     
-    // need to set this to true so that access_token is not appended to url as query parameter
-    // small f for for (careful when calling the method!!)
-    this._oauth2.useAuthorizationHeaderforGET(true);
-  }
+  // need to set this to true so that access_token is not appended to url as query parameter
+  // small f for for (careful when calling the method!!)
+  this._oauth2.useAuthorizationHeaderforGET(true);
 }
 
 /**
@@ -98,8 +96,8 @@ Strategy.prototype.userProfile = function(accessToken, done) {
       profile.id = json.id;
       profile.displayName = json.displayName;
       profile.emails = json.emails;
-      //profile.avatar = json.avatar;
-      //profile.created = json.created;
+      profile.avatar = json.avatar;
+      profile.created = json.created;
       
       profile._raw = body;
       profile._json = json;
