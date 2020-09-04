@@ -14,7 +14,6 @@ describe('CiscoSparkStrategy', function() {
     describe('strategy param tests', function () {
         it('should return false for passReqToCallback', function () {
             const strategy = new CiscoSparkStrategy({
-                test: true,
                 clientID: 'ABC123',
                 clientSecret: 'secret'
             }, function () { });
@@ -24,7 +23,6 @@ describe('CiscoSparkStrategy', function() {
 
         it('should return true for passReqToCallback', function () {
             const strategy = new CiscoSparkStrategy({
-                test: true,
                 clientID: 'ABC123',
                 clientSecret: 'secret',
                 passReqToCallback: true
@@ -35,7 +33,6 @@ describe('CiscoSparkStrategy', function() {
 
         it('should return prod oauth urls', function () {
             const strategy = new CiscoSparkStrategy({
-                test: true,
                 clientID: 'ABC123',
                 clientSecret: 'secret'
             }, function () { });
@@ -46,7 +43,6 @@ describe('CiscoSparkStrategy', function() {
 
         it('should return options oauth urls', function () {
             const strategy = new CiscoSparkStrategy({
-                test: true,
                 clientID: 'ABC123',
                 clientSecret: 'secret',
                 authorizationURL: 'https://api.ciscospark.com/v2/authorize',
