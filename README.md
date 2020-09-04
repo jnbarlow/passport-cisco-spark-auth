@@ -1,3 +1,5 @@
+![CI](https://github.com/docket-hq/passport-cisco-spark-auth/workflows/CI/badge.svg?branch=master)
+
 # Passport - Cisco Spark
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
