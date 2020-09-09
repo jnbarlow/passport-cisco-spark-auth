@@ -22,7 +22,7 @@ var util = require('util')
  *   - `clientSecret`  your CiscoSpark application's client secret
  *   - `callbackURL`   URL to which CiscoSpark will redirect the user after granting authorization
  *  <optional>
- *  - passReqToCallback (default false) - directs passport to send the request object 
+ *  - passReqToCallback (default false) - directs passport to send the request object
  *                                        to the verfication callback
  *
  * Examples:
@@ -45,18 +45,18 @@ var util = require('util')
  */
 function Strategy(options, verify) {
   options = options || {};
-  options.authorizationURL = options.authorizationURL || 'https://api.ciscospark.com/v1/authorize';
-  options.tokenURL = options.tokenURL || 'https://api.ciscospark.com/v1/access_token';
+  options.authorizationURL = options.authorizationURL || 'https://webexapis.com/v1/authorize';
+  options.tokenURL = options.tokenURL || 'https://webexapis.com/v1/access_token';
   // default options.scopeSeparator needs to be ' ' with Cisco Spark
-  options.scopeSeparator = options.scopeSeparator || ' ';
+  options._scopeSeparator = ' ';
   //pass this for tests
   this.userAuthorizationURL = options.authorizationURL;
   this.accessTokenURL = options.tokenURL;
-  
+
   OAuth2Strategy.call(this, options, verify);
-  this.name = 'cisco-spark'; 
+  this.name = 'cisco-spark';
   this._passReqToCallback = options.passReqToCallback || false;
-    
+
   // need to set this to true so that access_token is not appended to url as query parameter
   // small f for for (careful when calling the method!!)
   this._oauth2.useAuthorizationHeaderforGET(true);
@@ -77,31 +77,31 @@ util.inherits(Strategy, OAuth2Strategy);
  *   - `id`               the user's Cisco Spark ID
  *   - `displayName`      the user's displayName name
  *   - `emails`           the user's emails associated to Cisco Spark
- *   - `avatar`           the user's avatar (profile picture) 
+ *   - `avatar`           the user's avatar (profile picture)
  *   - `created`          date user joined Cisco Spark
  *
  * @param {String} accessToken
  * @param {Function} done
  * @api protected
  */
-Strategy.prototype.userProfile = function(accessToken, done) { 
+Strategy.prototype.userProfile = function(accessToken, done) {
   // get user info
-  this._oauth2.get('https://api.ciscospark.com/v1/people/me', accessToken, function (err, body, res) {    
+  this._oauth2.get('https://webexapis.com/v1/people/me', accessToken, function (err, body, res) {
     if (err) { return done(new InternalOAuthError('failed to fetch user profile', err)); }
-    
+
     try {
       var json = JSON.parse(body);
-      
+
       var profile = { provider: 'cisco-spark' };
       profile.id = json.id;
       profile.displayName = json.displayName;
       profile.emails = json.emails;
       profile.avatar = json.avatar;
       profile.created = json.created;
-      
+
       profile._raw = body;
       profile._json = json;
-      
+
       done(null, profile);
     } catch(e) {
       done(e);
