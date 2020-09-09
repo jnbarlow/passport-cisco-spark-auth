@@ -3,7 +3,7 @@ const should = require('should');
 const CiscoSparkStrategy = require('../index').Strategy;
 
 describe( 'passport-cisco-spark', function() {
-    describe('module', function() {  
+    describe('module', function() {
         it('should export class', function() {
             CiscoSparkStrategy.Strategy.should.be.an.instanceOf(Object);
         })
@@ -37,20 +37,20 @@ describe('CiscoSparkStrategy', function() {
                 clientSecret: 'secret'
             }, function () { });
 
-            strategy.userAuthorizationURL.should.equal('https://api.ciscospark.com/v1/authorize');
-            strategy.accessTokenURL.should.equal('https://api.ciscospark.com/v1/access_token');
+            strategy.userAuthorizationURL.should.equal('https://webexapis.com/v1/authorize');
+            strategy.accessTokenURL.should.equal('https://webexapis.com/v1/access_token');
         });
 
         it('should return options oauth urls', function () {
             const strategy = new CiscoSparkStrategy({
                 clientID: 'ABC123',
                 clientSecret: 'secret',
-                authorizationURL: 'https://api.ciscospark.com/v2/authorize',
-                tokenURL: 'https://api.ciscospark.com/v2/access_token'
+                authorizationURL: 'https://webexapis.com/v2/authorize',
+                tokenURL: 'https://webexapis.com/v2/access_token'
             }, function () { });
 
-            strategy.userAuthorizationURL.should.equal('https://api.ciscospark.com/v2/authorize');
-            strategy.accessTokenURL.should.equal('https://api.ciscospark.com/v2/access_token');
+            strategy.userAuthorizationURL.should.equal('https://webexapis.com/v2/authorize');
+            strategy.accessTokenURL.should.equal('https://webexapis.com/v2/access_token');
         });
     });
 })
