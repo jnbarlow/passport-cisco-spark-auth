@@ -17,7 +17,10 @@
     "webex",
     "oauth"
   ],
-  "author": "John Barlow",
+  "author": "Docket <help@dockethq.com> (https://www.dockethq.com/)",
+  "contributors": [
+    "John Barlow <jnbarlow@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/docket-hq/passport-cisco-spark-auth/issues"
